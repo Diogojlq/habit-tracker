@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "concurrently": "^9.2.0"
+  },
+  "scripts": {
+    "start": "concurrently \"go run .\" \"npm --prefix frontend run dev\""
+  }
+}
