@@ -28,13 +28,16 @@ func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var user User
-	err := json.NewDecoder(r.Body).Decode(&user)
-	if err != nil {
-		http.Error(w, "Invalid data", http.StatusBadRequest)
-		return
-	}
-	// save to db
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(map[string]string{"message": "User registered successfully!"})
+    err := json.NewDecoder(r.Body).Decode(&user)
+    if err != nil {
+        http.Error(w, "Invalid data", http.StatusBadRequest)
+        return
+    }
+    if err := db.Create(&user).Error; err != nil {
+        http.Error(w, "Database error", http.StatusInternalServerError)
+        return
+    }
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusCreated)
+    json.NewEncoder(w).Encode(map[string]string{"message": "User registered successfully!"})
 }
