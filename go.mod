@@ -3,6 +3,7 @@ module habit-tracker
 go 1.23
 
 require (
+	github.com/joho/godotenv v1.5.1
 	gorm.io/driver/postgres v1.6.0
 	gorm.io/gorm v1.30.0
 )
