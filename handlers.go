@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"habit-tracker/utils"
 	"net/http"
 )
 
@@ -27,12 +28,21 @@ func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
+
 	var user User
     err := json.NewDecoder(r.Body).Decode(&user)
     if err != nil {
         http.Error(w, "Invalid data", http.StatusBadRequest)
         return
     }
+
+	hashedPassword, err := utils.GenerateHashPassword(user.Password)
+	if err != nil {
+		http.Error(w, "Error hashing password", http.StatusInternalServerError)
+		return
+	}
+	user.Password = hashedPassword
+
     if err := db.Create(&user).Error; err != nil {
         http.Error(w, "Database error", http.StatusInternalServerError)
         return
