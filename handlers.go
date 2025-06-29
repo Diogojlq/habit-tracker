@@ -36,6 +36,11 @@ func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
+	if !utils.IsValidEmail(user.Email) {
+		http.Error(w, "Invalid email address", http.StatusBadRequest)
+		return
+	}
+
 	hashedPassword, err := utils.GenerateHashPassword(user.Password)
 	if err != nil {
 		http.Error(w, "Error hashing password", http.StatusInternalServerError)
