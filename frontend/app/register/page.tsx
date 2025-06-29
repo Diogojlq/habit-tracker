@@ -81,9 +81,10 @@ export default function RegisterPage() {
           </div>
           <button
             type="submit"
-            className="w-full p-2 rounded bg-blue-600 text-white font-bold"
+            className="w-full p-2 rounded bg-blue-600 text-white font-bold relative overflow-hidden group"
           >
-            Register
+            <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-400 transition-all duration-300 group-hover:translate-x-0 translate-x-full z-0"></span>
+            <span className="relative z-10">Register</span>
           </button>
         </form>
         {message && <p className="mt-4 text-center">{message}</p>}
