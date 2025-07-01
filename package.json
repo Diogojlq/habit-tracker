@@ -3,6 +3,6 @@
     "concurrently": "^9.2.0"
   },
   "scripts": {
-    "start": "concurrently \"go run .\" \"npm --prefix frontend run dev\""
+    "start": "concurrently \"npm run start --prefix backend\" \"npm run dev --prefix frontend\""
   }
 }
