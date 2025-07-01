@@ -2,8 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"habit-tracker/utils"
 	"net/http"
+
+	"github.com/Diogojlq/habit-tracker/backend/utils"
 )
 
 func CreateHabitHandler(w http.ResponseWriter, r *http.Request) {
