@@ -40,6 +40,6 @@ func main() {
     godotenv.Load()
     initDB()
     RegisterRoutes()
-    fmt.Println("Servidor rodando em http://localhost:8080") 
+    fmt.Println("Server running: http://localhost:8080") 
     http.ListenAndServe("127.0.0.1:8080", enableCORS(http.DefaultServeMux)) // change to ":8080" when pushing to prod
 }
