@@ -27,6 +27,6 @@ cd habit-tracker</code></pre>
   </ol>
 
   <h2>📃 License</h2>
-  <p>This project is licensed under the MIT License. See the <code>LICENSE</code> file for more information.</p>
+  <p>This project is licensed under the MIT License.</p>
 
 </body>
