@@ -1,3 +1,5 @@
+import AuthButtons from "./components/AuthButtons";
+
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center px-6 py-12 space-y-16 min-h-screen bg-base-200 text-base-content">
@@ -10,7 +12,8 @@ export default function Home() {
         <p className="text-gray-600 dark:text-gray-300 text-lg">
           Track, improve and conquer your routine with a simple and powerful app.
         </p>
-        <button className="btn btn-primary btn-lg mt-4">Começar agora</button>
+        <button className="btn btn-primary btn-lg mt-4">Start now</button>
+        <AuthButtons />
       </section>
 
       {/* Preview visual */}
