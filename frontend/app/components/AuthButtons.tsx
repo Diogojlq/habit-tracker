@@ -9,7 +9,6 @@ export default function AuthButtons() {
 
   return (
     <div className="flex flex-col md:flex-row gap-4 max-w-sm mx-auto">
-      {/* Register Button */}
       <Link href="/register" className="w-full md:w-auto">
         <button className={`${buttonClass} bg-blue-600`}>
           <span className={gradientBg}></span>
