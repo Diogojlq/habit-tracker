@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AuthButtons from "./components/AuthButtons";
+import CallToActionButton from "./components/CallToActionButton";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
           <p className="text-lg text-white/80">
             Track, improve and conquer your routine with a simple and powerful app.
           </p>
-          <button className="btn btn-primary btn-lg">Start now</button>
+          < CallToActionButton />
           <AuthButtons />
         </div>
 

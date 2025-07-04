@@ -57,3 +57,36 @@ func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
     w.WriteHeader(http.StatusCreated)
     json.NewEncoder(w).Encode(map[string]string{"message": "User registered successfully!"})
 }
+
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
+    if r.Method != http.MethodPost {
+        http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+        return
+    }
+
+    var req LoginRequest
+    if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+        http.Error(w, "Invalid data", http.StatusBadRequest)
+        return
+    }
+
+    var user User
+    if err := db.Where("email = ?", req.Email).First(&user).Error; err != nil {
+        http.Error(w, "Invalid email or password", http.StatusUnauthorized)
+        return
+    }
+
+    if !utils.CheckPasswordHash(req.Password, user.Password) {
+        http.Error(w, "Invalid email or password", http.StatusUnauthorized)
+        return
+    }
+
+    token, err := utils.GenerateJWT(user.ID)
+    if err != nil {
+        http.Error(w, "Could not generate token", http.StatusInternalServerError)
+        return
+    }
+
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(LoginResponse{Token: token})
+}

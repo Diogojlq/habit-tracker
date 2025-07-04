@@ -15,4 +15,5 @@ func RegisterRoutes() {
 		}
 	})
 	http.HandleFunc("/user/register", RegisterUserHandler)
+	http.HandleFunc("/user/authenticate", LoginHandler)
 }
