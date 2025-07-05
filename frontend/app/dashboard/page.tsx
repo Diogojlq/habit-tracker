@@ -1,7 +1,9 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import HabitForm from "../components/HabitForm";
 
 export default function DashboardPage() {
+    const [showHabitForm, setShowHabitForm] = useState(false);
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-900 via-blue-800 to-cyan-700 text-white px-4">
       <div className="w-full max-w-2xl p-8 rounded-xl shadow-2xl bg-white/10 backdrop-blur border border-white/20">
@@ -20,9 +22,13 @@ export default function DashboardPage() {
           </div>
         </div>
         <div className="mt-10 flex flex-col items-center">
-          <button className="px-6 py-2 rounded bg-gradient-to-r from-cyan-400 to-blue-600 text-white font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer">
+            <button
+            className="px-6 py-2 rounded bg-gradient-to-r from-cyan-400 to-blue-600 text-white font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer"
+            onClick={() => setShowHabitForm(true)}
+            >
             + Add New Habit
-          </button>
+            </button>
+          <HabitForm open={showHabitForm} onClose={() => setShowHabitForm(false)} />
         </div>
       </div>
     </main>
