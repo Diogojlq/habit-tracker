@@ -1,5 +1,4 @@
 import Image from "next/image";
-import AuthButtons from "./components/AuthButtons";
 import CallToActionButton from "./components/CallToActionButton";
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
             Track, improve and conquer your routine with a simple and powerful app.
           </p>
           < CallToActionButton />
-          <AuthButtons />
         </div>
 
         <div className="flex justify-center">
