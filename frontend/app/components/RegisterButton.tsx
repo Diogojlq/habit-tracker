@@ -8,17 +8,11 @@ export default function AuthButtons() {
     "absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-400 transition-transform duration-300 translate-x-full group-hover:translate-x-0";
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 max-w-sm mx-auto">
+    <div className="inline-block px-8 py-4 flex flex-col md:flex-row gap-4 max-w-sm mx-auto">
       <Link href="/register" className="w-full md:w-auto">
         <button className={`${buttonClass} bg-blue-600`}>
           <span className={gradientBg}></span>
           <span className="relative z-10">Register</span>
-        </button>
-      </Link>
-      <Link href="/login" className="w-full md:w-auto">
-        <button className={`${buttonClass} bg-blue-600`}>
-          <span className={gradientBg}></span>
-          <span className="relative z-10">Login</span>
         </button>
       </Link>
     </div>
