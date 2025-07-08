@@ -1,10 +1,17 @@
 package main
 
-import "gorm.io/gorm"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type Habit struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
+    ID        uint      `gorm:"primaryKey" json:"id"`
+    Name      string    `json:"name"`           
+    Date      time.Time `json:"date"`           
+    Daily     bool      `json:"daily"`          
+    DaysOfWeek []string `gorm:"type:text[]" json:"days_of_week,omitempty"`
 }
 
 type User struct {

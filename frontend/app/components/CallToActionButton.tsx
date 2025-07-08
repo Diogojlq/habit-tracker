@@ -2,7 +2,7 @@ export default function CallToActionButton() {
   
   return (
         <a
-        href="/start"
+        href="/register"
         className="
             inline-block px-8 py-4 
             rounded-full 
