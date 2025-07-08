@@ -1,8 +1,11 @@
 import Image from "next/image";
 import CallToActionButton from "./components/CallToActionButton";
+import Header from "./components/Header";
 
 export default function Home() {
   return (
+    <div>
+    <Header ></Header>
     <main className="flex flex-col items-center justify-center px-6 py-12 space-y-16 min-h-screen bg-gradient-to-r from-blue-900 via-blue-800 to-cyan-700 text-white">
       <section className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 w-full max-w-6xl">
         <div className="space-y-6">
@@ -52,5 +55,6 @@ export default function Home() {
           </ul>
       </section>
     </main>
+    </div>
   );
 }
