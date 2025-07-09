@@ -6,13 +6,13 @@ export default function Home() {
   return (
     <div>
     <Header ></Header>
-    <main className="flex flex-col items-center justify-center px-6 py-12 space-y-16 min-h-screen bg-gradient-to-r from-blue-900 via-blue-800 to-cyan-700 text-white">
+    <main className="flex flex-col items-center justify-center px-6 py-12 space-y-16 min-h-screen text-black">
       <section className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 w-full max-w-6xl">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
             Develop a better life with Habit Tracker
           </h1>
-          <p className="text-lg text-white/80">
+          <p className="text-lg text-black">
             Track, improve and conquer your routine with a simple and powerful app.
           </p>
           < CallToActionButton />
