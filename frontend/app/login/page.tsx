@@ -36,7 +36,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-900 via-blue-800 to-cyan-700 text-white px-4">
+    <main className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md p-8 rounded-xl shadow-2xl bg-white/10 backdrop-blur border border-white/20">
         <h2 className="text-3xl font-bold text-center mb-2">Welcome Back!</h2>
         <p className="text-center text-white/80 mb-8">Sign in to continue tracking your habits</p>
