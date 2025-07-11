@@ -5,7 +5,7 @@ import HabitForm from "../components/HabitForm";
 export default function DashboardPage() {
     const [showHabitForm, setShowHabitForm] = useState(false);
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-900 via-blue-800 to-cyan-700 text-white px-4">
+    <main className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-2xl p-8 rounded-xl shadow-2xl bg-white/10 backdrop-blur border border-white/20">
         <h1 className="text-4xl font-bold text-center mb-4">Your Dashboard</h1>
         <p className="text-center text-white/80 mb-8">
