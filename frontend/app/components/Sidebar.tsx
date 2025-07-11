@@ -1,6 +1,6 @@
 export default function Sidebar() {
   return (
-    <aside className="h-screen w-64 bg-gradient-to-b from-blue-900 to-blue-700 text-white flex flex-col">
+    <aside className="h-screen w-64 bg-gray-700 text-white flex flex-col">
       <div className="p-6 text-2xl font-bold border-b border-blue-600">
         Meu Painel
       </div>
