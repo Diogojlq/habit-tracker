@@ -9,7 +9,7 @@ export default function DashboardPage() {
   return (
     <div className="flex min-h-screen">      
       <Sidebar />
-      <main>
+      <main className="bg-customGray">
           <h2 className="top-0 left-0 mt-4 ml-4 text-2xl font-bold">
             today&apos;s habits
           </h2>
