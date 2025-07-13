@@ -15,7 +15,9 @@ export default function Home() {
           <p className="text-lg text-black">
             Track, improve and conquer your routine with a simple and powerful app.
           </p>
-          < CallToActionButton />
+          <div className="flex justify-center">
+            <CallToActionButton />
+          </div>
         </div>
 
         <div className="flex justify-center">
