@@ -7,13 +7,15 @@ export default function DashboardPage() {
   const [showHabitForm, setShowHabitForm] = useState(false);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen">      
       <Sidebar />
-
-      <main className="flex-1 flex flex-col items-center justify-center p-8">
+      <main>
+          <h2 className="top-0 left-0 mt-4 ml-4 text-2xl font-bold">
+            today&apos;s habits
+          </h2>
         <div className="w-full max-w-2xl p-8 rounded-xl shadow-2xl bg-white/10 backdrop-blur border border-white/20">
           <h1 className="text-4xl font-bold text-center mb-4">Your Dashboard</h1>
-          <p className="text-center text-white/80 mb-8">
+          <p className="text-center mb-8">
             Welcome to your habit dashboard! Here you can track your progress, add new habits, and stay motivated.
           </p>
 
