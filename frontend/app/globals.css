@@ -45,5 +45,8 @@ body {
 }
 
 @theme {
-  --color-customGray: #D9D9D9
+  --color-customColor1: #004030;
+  --color-customColor1: #4A9782;
+  --color-customColor1: #DCD0A8;
+  --color-customColor1: #FFF9E5;
 }
