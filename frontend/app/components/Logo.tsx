@@ -18,7 +18,7 @@ export default function Logo({ size = 60 }: { size?: number }) {
               font-family: Inter, sans-serif;
               font-weight: 600;
               font-size: 20px;
-              fill: #1e3a8a;
+              fill: #4A9782;
             }
             .check {
               fill: url(#grad);
