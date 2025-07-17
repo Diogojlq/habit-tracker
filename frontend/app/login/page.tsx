@@ -116,25 +116,6 @@ export default function LoginPage() {
           </a>
         </div>
       </div>
-      {/* Decorative illustration */}
-      <div className="absolute bottom-8 right-8 hidden md:block opacity-70 pointer-events-none">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-          <circle cx="60" cy="60" r="50" fill="url(#paint0_radial)" />
-          <defs>
-            <radialGradient
-              id="paint0_radial"
-              cx="0"
-              cy="0"
-              r="1"
-              gradientTransform="translate(60 60) rotate(90) scale(50)"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#22d3ee" />
-              <stop offset="1" stopColor="#1e3a8a" stopOpacity="0" />
-            </radialGradient>
-          </defs>
-        </svg>
-      </div>
     </main>
   );
 }
