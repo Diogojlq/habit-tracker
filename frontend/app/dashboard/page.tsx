@@ -7,8 +7,8 @@ export default function DashboardPage() {
   const [showHabitForm, setShowHabitForm] = useState(false);
 
   return (
-    <div className="flex min-h-screen">      
-      <Sidebar />
+    <div className="flex min-h-screen">  
+    <div className="split left"><Sidebar /></div>    
       <main className="bg-customGray">
           <h2 className="top-0 left-0 mt-4 ml-4 text-2xl font-bold">
             today&apos;s habits
