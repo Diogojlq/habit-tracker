@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
     <Header ></Header>
-    <main className="flex flex-col items-center justify-center px-6 py-12 space-y-16 min-h-screen text-black">
+    <main className="flex flex-col items-center justify-center px-6 py-12 space-y-16 min-h-screen text-black bg-customColor4">
       <section className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 w-full max-w-6xl">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
