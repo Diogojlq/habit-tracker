@@ -36,10 +36,10 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen">
-      <div className="w-full max-w-md p-8 rounded-xl shadow-2xl bg-white/10 backdrop-blur border border-white/20">
+    <main className="flex flex-col items-center justify-center min-h-screen bg-customColor3">
+      <div className="w-full max-w-md p-8 rounded-xl shadow-2xl bg-customColor4 backdrop-blur border border-white/20">
         <h2 className="text-3xl font-bold text-center mb-2">Welcome Back!</h2>
-        <p className="text-center text-white/80 mb-8">Sign in to continue tracking your habits</p>
+        <p className="text-center text-black mb-8">Sign in to continue tracking your habits</p>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="email" className="block mb-1 font-semibold">
@@ -74,7 +74,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full p-2 rounded bg-gradient-to-r from-blue-600 to-cyan-400 text-white font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer"
+            className="w-full p-2 rounded bg-gradient-to-r from-customColor2 to-customColor3 text-white font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer"
           >
             {loading ? (
               <span className="flex items-center justify-center">
@@ -107,33 +107,14 @@ export default function LoginPage() {
           </p>
         )}
         <div className="mt-8 flex flex-col items-center">
-          <span className="text-white/70">Dont have an account?</span>
+          <span className="text-black">Dont have an account?</span>
           <a
             href="/register"
-            className="mt-1 text-cyan-200 hover:underline font-semibold transition"
+            className="mt-1 text-blue-600 hover:underline font-semibold transition"
           >
             Create one now
           </a>
         </div>
-      </div>
-      {/* Decorative illustration */}
-      <div className="absolute bottom-8 right-8 hidden md:block opacity-70 pointer-events-none">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-          <circle cx="60" cy="60" r="50" fill="url(#paint0_radial)" />
-          <defs>
-            <radialGradient
-              id="paint0_radial"
-              cx="0"
-              cy="0"
-              r="1"
-              gradientTransform="translate(60 60) rotate(90) scale(50)"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#22d3ee" />
-              <stop offset="1" stopColor="#1e3a8a" stopOpacity="0" />
-            </radialGradient>
-          </defs>
-        </svg>
       </div>
     </main>
   );
