@@ -39,7 +39,7 @@ export default function LoginPage() {
     <main className="flex flex-col items-center justify-center min-h-screen bg-customColor3">
       <div className="w-full max-w-md p-8 rounded-xl shadow-2xl bg-customColor4 backdrop-blur border border-white/20">
         <h2 className="text-3xl font-bold text-center mb-2">Welcome Back!</h2>
-        <p className="text-center text-white/80 mb-8">Sign in to continue tracking your habits</p>
+        <p className="text-center text-black mb-8">Sign in to continue tracking your habits</p>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="email" className="block mb-1 font-semibold">
@@ -107,10 +107,10 @@ export default function LoginPage() {
           </p>
         )}
         <div className="mt-8 flex flex-col items-center">
-          <span className="text-white/70">Dont have an account?</span>
+          <span className="text-black">Dont have an account?</span>
           <a
             href="/register"
-            className="mt-1 text-cyan-200 hover:underline font-semibold transition"
+            className="mt-1 text-blue-600 hover:underline font-semibold transition"
           >
             Create one now
           </a>
