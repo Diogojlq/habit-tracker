@@ -74,7 +74,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full p-2 rounded bg-gradient-to-r from-blue-600 to-cyan-400 text-white font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer"
+            className="w-full p-2 rounded bg-gradient-to-r from-customColor2 to-customColor3 text-white font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer"
           >
             {loading ? (
               <span className="flex items-center justify-center">
