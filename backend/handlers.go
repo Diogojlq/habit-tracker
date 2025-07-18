@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/Diogojlq/habit-tracker/backend/database"
 	"github.com/Diogojlq/habit-tracker/backend/utils"
 )
 
@@ -49,7 +50,7 @@ func RegisterUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	user.Password = hashedPassword
 
-    if err := db.Create(&user).Error; err != nil {
+    if err := database.DB.Create(&user).Error; err != nil {
         http.Error(w, "Database error", http.StatusInternalServerError)
         return
     }
@@ -71,7 +72,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
     }
 
     var user User
-    if err := db.Where("email = ?", req.Email).First(&user).Error; err != nil {
+    if err := database.DB.Where("email = ?", req.Email).First(&user).Error; err != nil {
         http.Error(w, "Invalid email or password", http.StatusUnauthorized)
         return
     }
