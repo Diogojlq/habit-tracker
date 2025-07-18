@@ -10,6 +10,10 @@ import (
 
 var DB *gorm.DB
 
+type App struct {
+	DB *gorm.DB
+}
+
 func Init() {
 	var err error
 	dsn := os.Getenv("DATABASE_URL")
