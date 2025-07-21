@@ -3,17 +3,17 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/Diogojlq/habit-tracker/backend/handlers"
 )
 
-func RegisterRoutes() {
+func RegisterRoutes(app *handlers.App) {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "Welcome to Habit Tracker!")
 	})
-	http.HandleFunc("/habits", func(w http.ResponseWriter, r *http.Request) {
-		if r.Method == http.MethodPost {
-			fmt.Fprintln(w, "Habit registered!")
-		}
-	})
-	http.HandleFunc("/user/register", RegisterUserHandler)
-	http.HandleFunc("/user/authenticate", LoginHandler)
+
+	http.HandleFunc("/habits", app.CreateHabitHandler)
+
+	http.HandleFunc("/user/register", app.RegisterUserHandler)
+	http.HandleFunc("/user/authenticate", app.LoginHandler)
 }
