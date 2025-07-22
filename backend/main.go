@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/Diogojlq/habit-tracker/backend/database"
+	"github.com/Diogojlq/habit-tracker/backend/handlers"
 	"github.com/joho/godotenv"
-    "github.com/Diogojlq/habit-tracker/backend/database"
 )
-
 
 func enableCORS(next http.Handler) http.Handler {
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -23,9 +23,9 @@ func enableCORS(next http.Handler) http.Handler {
 }
 
 func main() {
-    database.Init()
     godotenv.Load()
-    RegisterRoutes()
+    database.Init()
+    RegisterRoutes(&handlers.App{DB: database.DB})
     fmt.Println("Server running: http://localhost:8080") 
     http.ListenAndServe("127.0.0.1:8080", enableCORS(http.DefaultServeMux)) // change to ":8080" when pushing to prod
 }
