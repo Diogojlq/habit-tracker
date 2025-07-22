@@ -50,3 +50,15 @@ body {
   --color-customColor3: #DCD0A8;
   --color-customColor4: #FFF9E5;
 }
+
+.split {
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+}
+
+.left {
+  left: 0;
+  width: 15%;
+}

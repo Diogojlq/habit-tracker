@@ -2,15 +2,13 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
-	"os"
 
+	"github.com/Diogojlq/habit-tracker/backend/database"
+	"github.com/Diogojlq/habit-tracker/backend/handlers"
+	"github.com/Diogojlq/habit-tracker/backend/router"
 	"github.com/joho/godotenv"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
 )
-
 
 func enableCORS(next http.Handler) http.Handler {
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -25,22 +23,10 @@ func enableCORS(next http.Handler) http.Handler {
     })
 }
 
-var db *gorm.DB
-
-func initDB() {
-    var err error
-    dsn := os.Getenv("DATABASE_URL")
-    db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
-    if err != nil {
-        log.Fatal("failed to connect database")
-    }
-    db.AutoMigrate(&User{})
-}
-
 func main() {
     godotenv.Load()
-    initDB()
-    RegisterRoutes()
+    database.Init()
+    router.RegisterRoutes(&handlers.App{DB: database.DB})
     fmt.Println("Server running: http://localhost:8080") 
     http.ListenAndServe("127.0.0.1:8080", enableCORS(http.DefaultServeMux)) // change to ":8080" when pushing to prod
 }
