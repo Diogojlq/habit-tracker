@@ -9,15 +9,17 @@ import (
 	"gorm.io/gorm"
 )
 
+type DBInterface interface {
+	Create(value interface{}) *gorm.DB
+	Where(query interface{}, args ...interface{}) *gorm.DB
+	First(dest interface{}, conds ...interface{}) *gorm.DB
+}
+
 type App struct {
-	DB *gorm.DB
+	DB DBInterface
 }
 
 func (app *App) CreateHabitHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
 	var habit models.Habit
 	err := json.NewDecoder(r.Body).Decode(&habit)
 	if err != nil {
