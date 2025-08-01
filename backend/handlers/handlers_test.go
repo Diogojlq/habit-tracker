@@ -18,22 +18,31 @@ type FakeDB struct {
 	FindUserByEmail func(email string, user *models.User) error
 }
 
-type DBInterface interface {
-	Create(value interface{}) *gorm.DB
-	Where(query string, args ...interface{}) *gorm.DB
-}
-
 func (f *FakeDB) Create(value interface{}) *gorm.DB {
 	user := value.(*models.User)
 	err := f.CreateUser(user)
 	return fakeResult(err)
 }
 
-func (f *FakeDB) Where(query string, args ...interface{}) *gorm.DB {
+func (f *FakeDB) Where(query interface{}, args ...interface{}) *gorm.DB {
 	email := args[0].(string)
 	var user models.User
 	err := f.FindUserByEmail(email, &user)
 	return &gorm.DB{Error: err, Statement: &gorm.Statement{Dest: &user}}
+}
+
+func (f *FakeDB) First(dest interface{}, conds ...interface{}) *gorm.DB {
+	if len(conds) == 0 {
+		return &gorm.DB{Error: errors.New("no conditions provided")}
+	}
+	email := conds[0].(string)
+	var user models.User
+	err := f.FindUserByEmail(email, &user)
+	if err != nil {
+		return &gorm.DB{Error: err}
+	}
+	*dest.(*models.User) = user
+	return &gorm.DB{}
 }
 
 func fakeResult(err error) *gorm.DB {
@@ -47,7 +56,7 @@ func TestCreateHabitHandler(t *testing.T) {
 	}
 	body, err := json.Marshal(habit)
 	if err != nil {
-		t.Fatal("Erro ao gerar JSON: %v", err)
+		t.Fatalf("Error with JSON: %v", err)
 	}
 	req := httptest.NewRequest(http.MethodPost, "/habits", bytes.NewBuffer(body))
 	rec := httptest.NewRecorder()
@@ -86,7 +95,7 @@ func TestRegisterUserHandler(t *testing.T) {
 	app.RegisterUserHandler(rec, req)
 
 	if rec.Code != http.StatusCreated {
-		t.Errorf("esperava status 201, obteve %d", rec.Code)
+		t.Errorf("awaited status 201, but received %d", rec.Code)
 	}
 }
 
@@ -99,7 +108,6 @@ func TestLoginHandler(t *testing.T) {
 				return errors.New("not found")
 			}
 			*user = models.User{
-				ID:       1,
 				Email:    email,
 				Password: hashed,
 			}
@@ -120,12 +128,12 @@ func TestLoginHandler(t *testing.T) {
 	app.LoginHandler(rec, req)
 
 	if rec.Code != http.StatusOK {
-		t.Errorf("esperava status 200, obteve %d", rec.Code)
+		t.Errorf("awaited status 200, but received: %d", rec.Code)
 	}
 
 	var res models.LoginResponse
 	_ = json.NewDecoder(rec.Body).Decode(&res)
 	if res.Token == "" {
-		t.Error("esperava token JWT válido, mas resposta está vazia")
+		t.Error("awaited valid JSON, but received empty token")
 	}
 }
