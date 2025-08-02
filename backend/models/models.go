@@ -1,15 +1,12 @@
 package models
 
 import (
-	"time"
-
 	"gorm.io/gorm"
 )
 
 type Habit struct {
     ID        uint      `gorm:"primaryKey" json:"id"`
-    Name      string    `json:"name"`           
-    Date      time.Time `json:"date"`           
+    Name      string    `json:"name"`                    
     Daily     bool      `json:"daily"`          
     DaysOfWeek []string `gorm:"type:text[]" json:"days_of_week,omitempty"`
 }
