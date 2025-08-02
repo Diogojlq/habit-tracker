@@ -26,6 +26,11 @@ func (app *App) CreateHabitHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Invalid data", http.StatusBadRequest)
 		return
 	}
+	
+	if err := app.DB.Create(&habit); err != nil {
+        http.Error(w, "Failed to create habit", http.StatusInternalServerError)
+        return
+    }
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
